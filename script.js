@@ -32,21 +32,27 @@ function createGalleryItem(item) {
   wrap.className = "gallery-item";
   wrap.tabIndex = 0;
 
-  const img = document.createElement("img");
-  img.className = "gallery-img";
-  const webp = encodeURI(item.src.replace(/\.(png|jpg|jpeg)$/i, '.webp'));
-  img.src = webp;
   const base = encodeURI(item.src.replace(/\.(png|jpg|jpeg|webp)$/i, ''));
-  img.srcset = [
+  const sizes = "(min-width:1024px) calc((100vw - 64px)/3), (min-width:700px) calc((100vw - 56px)/2), calc(100vw - 48px)";
+  const picture = document.createElement("picture");
+  picture.className = "gallery-picture";
+  const source = document.createElement("source");
+  source.type = "image/webp";
+  source.srcset = [
     `${base}-480.webp 480w`,
     `${base}-768.webp 768w`,
     `${base}-1024.webp 1024w`,
     `${base}-1440.webp 1440w`
   ].join(', ');
-  img.sizes = "(min-width:1024px) calc((100vw - 64px)/3), (min-width:700px) calc((100vw - 56px)/2), calc(100vw - 48px)";
+  source.sizes = sizes;
+  const img = document.createElement("img");
+  img.className = "gallery-img";
+  img.src = encodeURI(item.src);
   img.alt = item.alt || item.title || "Trabajo de pastelería";
   img.loading = "lazy";
   img.decoding = "async";
+  img.fetchPriority = "low";
+  if (item.focus) img.style.objectPosition = item.focus;
   img.onerror = () => {
     const original = encodeURI(item.src || "");
     if (original && original !== img.src){
@@ -65,7 +71,9 @@ function createGalleryItem(item) {
     <p class="overlay-desc">${item.desc || "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}</p>
   `;
 
-  wrap.appendChild(img);
+  picture.appendChild(source);
+  picture.appendChild(img);
+  wrap.appendChild(picture);
   wrap.appendChild(overlay);
 
   // Sin toggles: overlay solo por hover
@@ -128,6 +136,8 @@ function initParallaxHero(){
 
 async function setupHeroImage(){
   const el = document.querySelector('.hero-image');
+  const pic = document.querySelector('.hero-picture');
+  if (pic && el) return;
   if (!el) return;
   const candidates = ['images/hero.webp','images/hero.jpeg','images/hero.jpg','images/hero.png'];
   for (const raw of candidates){
@@ -141,6 +151,9 @@ async function setupHeroImage(){
     });
     if (ok){
       el.src = src;
+      el.loading = 'eager';
+      el.fetchPriority = 'high';
+      el.decoding = 'async';
       const base = encodeURI(src.replace(/\.(png|jpg|jpeg|webp)$/i, ''));
       el.srcset = [
         `${base}-800.webp 800w`,
@@ -150,8 +163,6 @@ async function setupHeroImage(){
       el.sizes = "min(100vw, 1200px)";
       const preload = document.querySelector('link[rel="preload"][as="image"]');
       if (preload) preload.href = src;
-      const og = document.querySelector('meta[property="og:image"]');
-      if (og) og.setAttribute('content', src);
       break;
     }
   }

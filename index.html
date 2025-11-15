@@ -16,6 +16,10 @@
       property="og:description"
       content="Galería editorial de postres finos con diseño minimalista y elegante."
     />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Portafolio – Janice Urbizagastegui Fernández – Pastry Chef" />
+    <meta name="twitter:description" content="Galería editorial de postres finos con diseño minimalista y elegante." />
+    <meta name="twitter:image" content="images/hero.png" />
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
@@ -25,6 +29,7 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='70' font-size='80'>🍰</text></svg>"
     />
+    <link rel="canonical" href="https://keneth-urbizagastegui.github.io/portafolio-janice/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,7 +39,9 @@
     <link
       rel="preload"
       as="image"
-      href="images/hero.png"
+      href="images/hero.webp"
+      type="image/webp"
+      fetchpriority="high"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -42,12 +49,17 @@
     <header class="site-header" aria-label="Encabezado"></header>
     <main id="main" class="site-main" aria-label="Contenido principal">
       <section class="hero" aria-label="Hero">
-        <img
-          class="hero-image"
-          src="images/hero.png"
-          alt="Creación distintiva de alta pastelería"
-          decoding="async"
-        />
+        <picture class="hero-picture">
+          <source type="image/webp" srcset="images/hero-480.webp 480w, images/hero-768.webp 768w, images/hero-1024.webp 1024w, images/hero-1440.webp 1440w" sizes="min(100vw, 1200px)" />
+          <img
+            class="hero-image"
+            src="images/hero.png"
+            alt="Creación distintiva de alta pastelería"
+            decoding="async"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </picture>
         <div class="hero-content">
           <h1 class="hero-title">Janice Urbizagastegui Fernández</h1>
           <p class="hero-subtitle">Pastry Chef</p>

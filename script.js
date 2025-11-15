@@ -34,14 +34,19 @@ function createGalleryItem(item) {
 
   const img = document.createElement("img");
   img.className = "gallery-img";
-  img.src = encodeURI(item.src);
+  const webp = encodeURI(item.src.replace(/\.(png|jpg|jpeg)$/i, '.webp'));
+  img.src = webp;
   img.alt = item.alt || item.title || "Trabajo de pastelería";
   img.loading = "lazy";
   img.decoding = "async";
   img.onerror = () => {
-    const fallback = (encodeURI(item.src || "").replace(/\.png$/i, ".jpg")) || "";
-    if (fallback && fallback !== img.src){
-      img.src = fallback;
+    const original = encodeURI(item.src || "");
+    if (original && original !== img.src){
+      img.src = original;
+      img.onerror = () => {
+        const jpg = original.replace(/\.png$/i, ".jpg");
+        if (jpg !== img.src) img.src = jpg;
+      };
     }
   };
 

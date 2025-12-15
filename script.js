@@ -48,7 +48,8 @@ function createGalleryItem(item) {
   const img = document.createElement("img");
   img.className = "gallery-img";
   img.src = encodeURI(item.src);
-  img.alt = item.alt || item.title || "Trabajo de pastelería";
+  // Generate descriptive alt text for accessibility
+  img.alt = item.alt || `${item.title || 'Creación de pastelería'}: ${(item.desc || '').substring(0, 100)}`.trim();
   img.loading = "lazy";
   img.decoding = "async";
   img.fetchPriority = "low";
@@ -170,31 +171,31 @@ async function setupHeroImage() {
 }
 
 function initScrollToTop() {
-    const scrollBtn = document.getElementById('scroll-to-top');
-    if (!scrollBtn) return;
+  const scrollBtn = document.getElementById('scroll-to-top');
+  if (!scrollBtn) return;
 
-    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function updateScrollButton() {
-        const scrollTop = window.scrollY || window.pageYOffset;
-        if (scrollTop > 300) {
-            scrollBtn.classList.add('visible');
-        } else {
-            scrollBtn.classList.remove('visible');
-        }
+  function updateScrollButton() {
+    const scrollTop = window.scrollY || window.pageYOffset;
+    if (scrollTop > 300) {
+      scrollBtn.classList.add('visible');
+    } else {
+      scrollBtn.classList.remove('visible');
     }
+  }
 
-    window.addEventListener('scroll', updateScrollButton, { passive: true });
-    updateScrollButton();
+  window.addEventListener('scroll', updateScrollButton, { passive: true });
+  updateScrollButton();
 
-    scrollBtn.addEventListener('click', () => {
-        if (reduce) {
-            window.scrollTo(0, 0);
-        } else {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    });
+  scrollBtn.addEventListener('click', () => {
+    if (reduce) {
+      window.scrollTo(0, 0);
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  });
 }

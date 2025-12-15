@@ -1,0 +1,17 @@
+{
+  "name": "Janice Urbizagastegui - Pastry Chef Portfolio",
+  "short_name": "Portfolio JU",
+  "description": "Portafolio digital de Janice Urbizagastegui Fernández, Pastry Chef egresada de Le Cordon Bleu",
+  "start_url": "/janice-urbizagastegui/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#B0A171",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='70' font-size='80'>🍰</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

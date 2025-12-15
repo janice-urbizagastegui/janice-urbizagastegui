@@ -205,7 +205,7 @@ body {
 
 .gallery-img {
   width: 100%;
-  height: auto;
+  height: 280px;
   display: block;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -214,23 +214,34 @@ body {
   object-position: center
 }
 
+@media (min-width:700px) {
+  .gallery-img {
+    height: 340px
+  }
+}
+
+@media (min-width:1024px) {
+  .gallery-img {
+    height: 400px
+  }
+}
+
 .gallery-overlay {
   position: absolute;
   inset: 4%;
   background: rgba(255, 255, 255, 0.92);
   color: var(--text);
   border-radius: calc(var(--radius) - 4px);
-  padding: clamp(6px, 3%, 16px);
+  padding: clamp(10px, 4%, 18px);
   display: flex;
   flex-direction: column;
-  gap: clamp(3px, 1.5%, 6px);
+  gap: clamp(6px, 2%, 10px);
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   opacity: 0;
   transition: opacity .25s ease;
   z-index: 2;
-  overflow-y: auto;
-  overflow-x: hidden
+  overflow: hidden
 }
 
 .gallery-item:hover .gallery-overlay {
@@ -244,9 +255,9 @@ body {
 .overlay-title {
   font-family: var(--serif);
   font-weight: 600;
-  font-size: clamp(11px, 3.5vw, 16px);
+  font-size: clamp(14px, 4vw, 20px);
   line-height: 1.25;
-  margin: 0 0 clamp(3px, 1.5%, 6px);
+  margin: 0 0 clamp(4px, 1.5%, 8px);
   text-align: left;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -255,12 +266,17 @@ body {
 
 .overlay-desc {
   margin: 0;
-  font-size: clamp(9px, 2.5vw, 12px);
+  font-size: clamp(11px, 3vw, 14px);
   line-height: 1.35;
   text-align: left;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  width: 100%
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden
 }
 
 .overlay-toggle {

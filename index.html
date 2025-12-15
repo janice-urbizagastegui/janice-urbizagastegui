@@ -1,113 +1,87 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Portafolio – Janice Urbizagastegui Fernández – Pastry Chef</title>
-    <meta
-      name="description"
-      content="Portafolio digital de Janice Urbizagastegui Fernández, Pastry Chef egresada de Le Cordon Bleu. Lujo silencioso y fotografía de alta cocina."   
-    />
-    <meta
-      property="og:title"
-      content="Portafolio – Janice Urbizagastegui Fernández – Pastry Chef"
-    />
-    <meta
-      property="og:description"
-      content="Galería editorial de postres finos con diseño minimalista y elegante."
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Portafolio – Janice Urbizagastegui Fernández – Pastry Chef" />
-    <meta name="twitter:description" content="Galería editorial de postres finos con diseño minimalista y elegante." />
-    <meta name="twitter:image" content="images/hero.png" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:image"
-      content="images/hero.png"
-    />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='70' font-size='80'>🍰</text></svg>"
-    />
-    <link rel="canonical" href="https://keneth-urbizagastegui.github.io/portafolio-janice/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="images/hero.webp"
-      type="image/webp"
-      fetchpriority="high"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header" aria-label="Encabezado"></header>
-    <main id="main" class="site-main" aria-label="Contenido principal">
-      <section class="hero" aria-label="Hero">
-        <picture class="hero-picture">
-          <source type="image/webp" srcset="images/hero-480.webp 480w, images/hero-768.webp 768w, images/hero-1024.webp 1024w, images/hero-1440.webp 1440w" sizes="min(100vw, 1200px)" />
-          <img
-            class="hero-image"
-            src="images/hero.png"
-            alt="Creación distintiva de alta pastelería"
-            decoding="async"
-            loading="eager"
-            fetchpriority="high"
-          />
-        </picture>
-        <div class="hero-content">
-          <h1 class="hero-title">Janice Urbizagastegui Fernández</h1>
-          <p class="hero-subtitle">Pastry Chef</p>
-          <a class="hero-cta" href="#galeria">Ver Portafolio</a>
-        </div>
-      </section>
 
-      <section id="galeria" class="gallery-section" aria-label="Galería de trabajos">
-        <div class="section-header">
-          <h2>Portafolio</h2>
-        </div>
-        <div id="gallery" class="gallery" aria-live="polite"></div>
-      </section>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio – Janice Urbizagastegui Fernández – Pastry Chef</title>
+  <meta name="description"
+    content="Portafolio digital de Janice Urbizagastegui Fernández, Pastry Chef egresada de Le Cordon Bleu. Lujo silencioso y fotografía de alta cocina." />
+  <meta property="og:title" content="Portafolio – Janice Urbizagastegui Fernández – Pastry Chef" />
+  <meta property="og:description" content="Galería editorial de postres finos con diseño minimalista y elegante." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Portafolio – Janice Urbizagastegui Fernández – Pastry Chef" />
+  <meta name="twitter:description" content="Galería editorial de postres finos con diseño minimalista y elegante." />
+  <meta name="twitter:image" content="images/hero.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/hero.png" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='70' font-size='80'>🍰</text></svg>" />
+  <link rel="canonical" href="https://keneth-urbizagastegui.github.io/portafolio-janice/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="preload" as="image" href="images/hero.webp" type="image/webp" fetchpriority="high" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-      <section id="sobre-mi" class="about-section" aria-label="Sobre mí">
-        <div class="section-header"><h2>Sobre Mí</h2></div>
-        <div class="about-content">
-          <p>
-            Apasionada por la técnica francesa y los ingredientes de origen,
-            con un enfoque claro en la precisión, la estética contemporánea
-            y la creación de experiencias memorables.
-          </p>
-          <p>
-            Graduada de Le Cordon Bleu Lima, con experiencia clave en
-            referentes de la gastronomía y hotelería de lujo como el
-            <strong>Restaurante Wallqa</strong> y el
-            <strong>Country Club Lima Hotel</strong>. Comprometida con la
-            innovación y la excelencia en cada creación.
-          </p>
-        </div>
-      </section>
+<body>
+  <header class="site-header" aria-label="Encabezado"></header>
+  <main id="main" class="site-main" aria-label="Contenido principal">
+    <section class="hero" aria-label="Hero">
+      <picture class="hero-picture">
+        <source type="image/webp"
+          srcset="images/hero-480.webp 480w, images/hero-768.webp 768w, images/hero-1024.webp 1024w, images/hero-1440.webp 1440w"
+          sizes="min(100vw, 1200px)" />
+        <img class="hero-image" src="images/hero.png" alt="Creación distintiva de alta pastelería" decoding="async"
+          loading="eager" fetchpriority="high" />
+      </picture>
+      <div class="hero-content">
+        <h1 class="hero-title">Janice Urbizagastegui Fernández</h1>
+        <p class="hero-subtitle">Pastry Chef</p>
+        <a class="hero-cta" href="#galeria">Ver Portafolio</a>
+      </div>
+    </section>
 
-      <section id="contacto" class="contact-section" aria-label="Contacto">
-        <div class="section-header"><h2>Contacto</h2></div>
-        <div class="contact-content">
-          <a class="contact-link" href="mailto:chef@example.com"
-            >chef@example.com</a
-          >
-          <a
-            class="contact-link"
-            href="https://www.linkedin.com/in/placeholder"
-            target="_blank"
-            rel="noopener"
-            >LinkedIn</a
-          >
-        </div>
-      </section>
-    </main>
-    <script src="script.js" defer></script>
-  </body>
+    <section id="galeria" class="gallery-section" aria-label="Galería de trabajos">
+      <div class="section-header">
+        <h2>Portafolio</h2>
+      </div>
+      <div id="gallery" class="gallery" aria-live="polite"></div>
+    </section>
+
+    <section id="sobre-mi" class="about-section" aria-label="Sobre mí">
+      <div class="section-header">
+        <h2>Sobre Mí</h2>
+      </div>
+      <div class="about-content">
+        <p>
+          Chef Pastelera graduada de Le Cordon Bleu. Mi base profesional se consolidó en entornos de alta exigencia,
+          completando mi formación en referentes como el Country Club Lima Hotel y el Restaurante Wallqa.
+        </p>
+        <p>
+          Desde finales de 2020, ejerzo como Chef Pastelera en Pastelería Vera. En este emprendimiento, estoy a cargo de
+          la producción integral de la línea de postres, abarcando todo el ciclo operativo: desde el desarrollo de
+          recetas y la selección de materia prima, hasta la ejecución técnica y el acabado final, aplicando estándares
+          de alta pastelería en cada elaboración.
+        </p>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact-section" aria-label="Contacto">
+      <div class="section-header">
+        <h2>Contacto</h2>
+      </div>
+      <div class="contact-content">
+        <a class="contact-link" href="mailto:janice.urbiza97@gmail.com">janice.urbiza97@gmail.com</a>
+        <a class="contact-link" href="https://www.linkedin.com/in/janice-urbizagastegui" target="_blank"
+          rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+  <script src="script.js" defer></script>
+</body>
+
 </html>

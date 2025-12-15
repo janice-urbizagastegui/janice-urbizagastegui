@@ -55,7 +55,7 @@ function createGalleryItem(item) {
   if (item.focus) img.style.objectPosition = item.focus;
   img.onerror = () => {
     const original = encodeURI(item.src || "");
-    if (original && original !== img.src){
+    if (original && original !== img.src) {
       img.src = original;
       img.onerror = () => {
         const jpg = original.replace(/\.png$/i, ".jpg");
@@ -109,9 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
   initGallery();
   setupHeroImage();
   initParallaxHero();
+  initScrollToTop();
 });
 
-function initParallaxHero(){
+function initParallaxHero() {
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) return;
   const heroImg = document.querySelector('.hero-image');
@@ -119,9 +120,9 @@ function initParallaxHero(){
   let latestY = 0; let ticking = false;
   const MAX_OFFSET = 60; // px, clamp para móvil
 
-  function onScroll(){
+  function onScroll() {
     latestY = window.scrollY || window.pageYOffset;
-    if (!ticking){
+    if (!ticking) {
       window.requestAnimationFrame(() => {
         const offset = Math.max(-MAX_OFFSET, Math.min(MAX_OFFSET, latestY * 0.15));
         heroImg.style.transform = `translateY(${offset * -1}px)`;
@@ -134,13 +135,13 @@ function initParallaxHero(){
   onScroll();
 }
 
-async function setupHeroImage(){
+async function setupHeroImage() {
   const el = document.querySelector('.hero-image');
   const pic = document.querySelector('.hero-picture');
   if (pic && el) return;
   if (!el) return;
-  const candidates = ['images/hero.webp','images/hero.jpeg','images/hero.jpg','images/hero.png'];
-  for (const raw of candidates){
+  const candidates = ['images/hero.webp', 'images/hero.jpeg', 'images/hero.jpg', 'images/hero.png'];
+  for (const raw of candidates) {
     const src = encodeURI(raw);
     const ok = await new Promise((resolve) => {
       const test = new Image();
@@ -149,7 +150,7 @@ async function setupHeroImage(){
       test.onerror = () => resolve(false);
       test.src = src;
     });
-    if (ok){
+    if (ok) {
       el.src = src;
       el.loading = 'eager';
       el.fetchPriority = 'high';
@@ -166,4 +167,34 @@ async function setupHeroImage(){
       break;
     }
   }
+}
+
+function initScrollToTop() {
+    const scrollBtn = document.getElementById('scroll-to-top');
+    if (!scrollBtn) return;
+
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function updateScrollButton() {
+        const scrollTop = window.scrollY || window.pageYOffset;
+        if (scrollTop > 300) {
+            scrollBtn.classList.add('visible');
+        } else {
+            scrollBtn.classList.remove('visible');
+        }
+    }
+
+    window.addEventListener('scroll', updateScrollButton, { passive: true });
+    updateScrollButton();
+
+    scrollBtn.addEventListener('click', () => {
+        if (reduce) {
+            window.scrollTo(0, 0);
+        } else {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    });
 }
